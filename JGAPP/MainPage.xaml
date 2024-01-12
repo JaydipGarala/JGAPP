@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JGAPP.MainPage" Title="JGAPP" >
+
+    <ScrollView>
+        <VerticalStackLayout x:Name="vsl"
+            Padding="30,0"
+            Spacing="25">
+            <StackLayout x:Name="skl" Padding="30,0" Spacing="25" >
+            <Image
+                Source="valuemoney.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="value Logo" />
+
+            <Label
+                Text="Login"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Entry
+                Text="" x:Name="email"
+                Placeholder="E-Mail" />
+            <Entry IsPassword="True" Placeholder="Password" x:Name="password"  >  </Entry>
+             
+            <Button
+                x:Name="loginbtn"
+                Text="Login" Clicked="loginbtn_ClickedAsync"
+                HorizontalOptions="Fill"  />
+            <Button Text="Register" HorizontalOptions="Fill" x:Name="registerbtn" Clicked="registerbtn_Clicked" >
+                
+            </Button>
+            </StackLayout>
+            <StackLayout
+                x:Name="aiLayout"
+                IsVisible="False" HorizontalOptions="Fill" VerticalOptions="Fill"
+                BackgroundColor="Gray">
+                    <ActivityIndicator
+                    x:Name="ai"
+                    IsRunning="False"  WidthRequest="200" HeightRequest="200"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    Color="Purple"/>
+                <Label Text="Please Wait !!!!!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Red" FontSize="Large" ></Label>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
