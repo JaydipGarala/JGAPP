@@ -29,14 +29,20 @@ namespace JGAPP
         async Task<bool> isAuthenticated()
         {
             await Task.Delay(2000);
-            var hasAuth = await SecureStorage.GetAsync("hasAuth");
+            var hasAuth = await SecureStorage.GetAsync("email");
             return !(hasAuth == null);
         }
 
         protected override bool OnBackButtonPressed()
         {
-            Application.Current.Quit();
+            AppClose();
             return true;
         }
+
+        private void AppClose()
+        {
+            Application.Current!.Quit();
+        }
+
     }
 }

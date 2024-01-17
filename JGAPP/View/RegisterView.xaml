@@ -3,10 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JGAPP.View.RegisterView"
              Title="Register">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout x:Name="vsl"
+        Padding="30,0"
+        Spacing="25">
+            <StackLayout x:Name="skl" Padding="30,0" Spacing="25" >
+
+                <Entry Placeholder="Mobile No." x:Name="mobileorname"></Entry>
+
+             <Entry
+            Text="" x:Name="email"
+            Placeholder="E-Mail" />
+                <Entry IsPassword="True" Placeholder="Password" x:Name="password"  ></Entry>
+                
+                <Button
+            x:Name="registerbtn"
+            Text="Register E-Mail" Clicked="registerbtn_ClickedAsync" 
+            HorizontalOptions="Fill"  />
+                
+            </StackLayout>
+            <StackLayout
+            x:Name="aiLayout"
+            IsVisible="False" HorizontalOptions="Fill" VerticalOptions="Fill"
+            BackgroundColor="Gray">
+                <ActivityIndicator
+                x:Name="ai"
+                IsRunning="False"  WidthRequest="200" HeightRequest="200"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                Color="Purple"/>
+                <Label Text="Please Wait !!!!!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Red" FontSize="Large" ></Label>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>

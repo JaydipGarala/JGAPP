@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using JGAPP.Services;
+using Microsoft.Extensions.Logging;
 
 namespace JGAPP
 {
@@ -18,7 +19,7 @@ namespace JGAPP
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSingleton<IAuthService, AuthService>();
             return builder.Build();
         }
     }
