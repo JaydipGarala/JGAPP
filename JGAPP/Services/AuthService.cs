@@ -27,6 +27,8 @@ namespace JGAPP.Services
              Email=email, IDToken=user.User.Credential.IdToken, RefreshToken=user.User.Credential.RefreshToken,
               UId=user.User.Uid
             };
+            Configuration.DataUid = response.UId;
+            Configuration.IdToken = response.IDToken;
             return response;
         }
 
@@ -53,22 +55,21 @@ namespace JGAPP.Services
                 RefreshToken = user.User.Credential.RefreshToken,
                 UId = user.User.Uid
             };
+            Configuration.DataUid = response.UId;
             return response;
         }
 
         public  async Task<bool> RegisterLoginAsync(string email, string password)
         {
             LoginResponse response = new LoginResponse();
-            DeviceInformation device = new DeviceInformation(response.RefreshToken);
+            DeviceData d1 = new DeviceData();
+            
             bool deviceresult = false;
-            var taskmethodrun = new Task[]
-            {
-                Task.Run(async ()=> response = await RegisterLoginUser(email,password) ),
-                Task.Run(async()=>  deviceresult = await device.CheckDevice())
-            };
+                response = await RegisterLoginUser(email,password);
+            DeviceInformation device = new DeviceInformation(d1);
+            deviceresult = await device.CheckDevice();
             try
             {
-                await Task.WhenAll(taskmethodrun);
                 if (response.RefreshToken != null && deviceresult==true )
                 {
                     return true;
@@ -93,9 +94,10 @@ namespace JGAPP.Services
         {
             LoginResponse response = new LoginResponse();
                   response = await RegisterUser(email, password, name);
-                DeviceInformation device = new DeviceInformation(response.IDToken);
+            DeviceData d1 = new DeviceData();
+                DeviceInformation device = new DeviceInformation(d1);
             Configuration.DataUid = response.UId;
-                bool  deviceresult = await device.SaveDevice(device);
+                bool  deviceresult = await device.SaveDevice(d1);
             
             try
             {

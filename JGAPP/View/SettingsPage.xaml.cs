@@ -13,7 +13,7 @@ public partial class SettingsPage : ContentPage
         if (await DisplayAlert("Are you sure?", "You will be logged out.", "Yes", "No"))
         {
             SecureStorage.RemoveAll();
-            await Shell.Current.GoToAsync("///login");
+            await Shell.Current.GoToAsync("///MainPage");
         }
     }
 }

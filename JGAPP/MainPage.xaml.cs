@@ -35,7 +35,7 @@ namespace JGAPP
                     aiLayout.IsVisible = false;
                     ai.IsVisible = false;
                     ai.IsRunning = false;
-                    await DisplayAlert( "Error", "E-Mail or password is wrong!", "Ok");
+                    await DisplayAlert( "Error", "E-Mail or password is wrong! Or Write E-Mail to Admin It takes 7days", "Ok");
                    
                 }
             }

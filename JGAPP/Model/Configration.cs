@@ -8,6 +8,6 @@ namespace JGAPP.Model
 {
     internal class Configuration
     {
-
+        
     }
 }
